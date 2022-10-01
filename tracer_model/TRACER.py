@@ -1,3 +1,7 @@
+"""
+author: Min Seok Lee and Wooseok Shin
+Github repo: https://github.com/Karel911/TRACER
+"""
 
 import torch
 import torch.nn as nn

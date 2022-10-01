@@ -14,7 +14,7 @@ import sys
 process = subprocess.Popen(["bash", "tracer_run.sh"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 stdout, stderr = process.communicate()
 sys.stdout.buffer.write(stdout)
-sys.stdout.buffer.write(stderr)
+# sys.stdout.buffer.write(stderr)
 sys.stdout.buffer.flush()
 process.stdout.close()
 process.wait()
@@ -60,6 +60,7 @@ def choose_mask():
 
     for ind in range(l):
         o, u2, i, t = get_image_mask(ind)
+        imgs = [o, u2, i, t]
 
         plts[0].imshow(o)
         plts[0].set_title("Original image")
@@ -79,8 +80,12 @@ def choose_mask():
         # print('combined/' + original_files[ind][:-3] + 'png', "saved")
         # plt.savefig('combined/' + original_files[ind][:-3] + 'png')
         # plt.show()
-        choice = int(input("Chooce the mask (1/2/3): "))
+        # choice = int(input("Chooce the mask (1/2/3): "))
+        choice = 3
         choices.append(choice)
+        
+        file_name = 'results/' + original_files[ind]
+        cv2.imwrite(file_name, imgs[choice])
         
     return choices
 

@@ -86,7 +86,7 @@ def main():
 
         if torch.cuda.is_available():
             print("WOO! CUDA IS avaialble!!!")
-            net.load_state_dict(torch.load(model_dir, map_location=torch.device()))
+            net.load_state_dict(torch.load(model_dir, map_location=torch.device("cuda")))
             net.cuda()
         else:
             print("Noo! CUDA IS NOT avaialble!!!")

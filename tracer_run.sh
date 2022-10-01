@@ -1,0 +1,1 @@
+python3 tracer_test.py inference --dataset images/ --arch 7 --img_size 640 --save_map True

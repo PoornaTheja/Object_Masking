@@ -16,7 +16,7 @@ from torchvision.transforms.functional import normalize
 from isnet_models import *
 
 
-if __name__ == "__main__":
+def main():
     dataset_path="data/images"  #Your dataset path
     model_path="isnet-general-use.pth"  # the model path
     result_path="data/is_net_results"  #The folder path that you want to save the results
@@ -50,3 +50,7 @@ if __name__ == "__main__":
         result = (result-mi)/(ma-mi)
         im_name=im_path.split('/')[-1].split('.')[0]
         io.imsave(os.path.join(result_path,im_name+".png"),(result*255).permute(1,2,0).cpu().data.numpy().astype(np.uint8))
+
+
+if __name__ == "__main__":
+    main()

@@ -10,7 +10,6 @@ from tracer_config import getConfig
 warnings.filterwarnings('ignore')
 args = getConfig()
 
-
 def main(args):
     print('<---- Training Params ---->')
     pprint.pprint(args)

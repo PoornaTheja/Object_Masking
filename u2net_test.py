@@ -85,9 +85,11 @@ def main():
             net = U2NETP(3, 1)
 
         if torch.cuda.is_available():
-            net.load_state_dict(torch.load(model_dir))
+            print("WOO! CUDA IS avaialble!!!")
+            net.load_state_dict(torch.load(model_dir, map_location=torch.device()))
             net.cuda()
         else:
+            print("Noo! CUDA IS NOT avaialble!!!")
             net.load_state_dict(torch.load(model_dir, map_location='cpu'))
         net.eval()
     

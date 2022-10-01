@@ -77,15 +77,12 @@ def choose_mask():
         fig.canvas.draw()
         fig.canvas.flush_events()
 
-        # print('combined/' + original_files[ind][:-3] + 'png', "saved")
-        # plt.savefig('combined/' + original_files[ind][:-3] + 'png')
-        # plt.show()
-        # choice = int(input("Chooce the mask (1/2/3): "))
-        choice = 3
+        choice = int(input("Chooce the mask (1/2/3): "))
         choices.append(choice)
         
         file_name = 'results/' + original_files[ind]
         cv2.imwrite(file_name, imgs[choice])
+        print(file_name, "saved")
         
     return choices
 

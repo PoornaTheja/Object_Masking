@@ -39,9 +39,9 @@ class Inference():
                                       batch_size=args.batch_size, shuffle=False,
                                       num_workers=args.num_workers, transform=self.test_transform)
 
-        if args.save_map is not None:
-            os.makedirs(os.path.join('mask', self.args.dataset), exist_ok=True)
-            os.makedirs(os.path.join('object', self.args.dataset), exist_ok=True)
+        # if args.save_map is not None:
+        #     os.makedirs(os.path.join('mask', self.args.dataset), exist_ok=True)
+        #     os.makedirs(os.path.join('object', self.args.dataset), exist_ok=True)
 
     def test(self):
         self.model.eval()
@@ -63,8 +63,8 @@ class Inference():
                         output = (output.squeeze().detach().cpu().numpy() * 255.0).astype(np.uint8)
 
                         salient_object = self.post_processing(images[i], output, h, w)
-                        cv2.imwrite(os.path.join('mask', self.args.dataset, image_name[i] + '.png'), output)
-                        cv2.imwrite(os.path.join('object', self.args.dataset, image_name[i] + '.png'), salient_object)
+                        cv2.imwrite(os.path.join('data', 'tracer_mask', image_name[i] + '.png'), output)
+                        # cv2.imwrite(os.path.join('data', self.args.dataset, image_name[i] + '.png'), salient_object)
 
         print(f'time: {time.time() - t:.3f}s')
 

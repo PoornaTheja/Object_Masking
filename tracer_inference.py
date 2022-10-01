@@ -28,7 +28,7 @@ class Inference():
         if args.multi_gpu:
             self.model = nn.DataParallel(self.model).to(self.device)
 
-        path = load_pretrained(f'TE-{args.arch}')
+        path = load_pretrained(f'TE-{args.arch}')        
         self.model.load_state_dict(path)
         print('###### pre-trained Model restored #####')
 

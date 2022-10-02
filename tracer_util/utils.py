@@ -3,9 +3,9 @@ from torch.utils import model_zoo
 
 def to_array(feature_map):
     if feature_map.shape[0] == 1:
-        feature_map = feature_map.squeeze(0).permute(1, 2, 0).detach().cpu().numpy()
+        feature_map = feature_map.squeeze(0).permute(1, 2, 0).detach().cuda().numpy()
     else:
-        feature_map = feature_map.permute(0, 2, 3, 1).detach().cpu().numpy()
+        feature_map = feature_map.permute(0, 2, 3, 1).detach().cuda().numpy()
     return feature_map
 
 def to_tensor(feature_map):

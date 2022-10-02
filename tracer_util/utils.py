@@ -3,9 +3,9 @@ from torch.utils import model_zoo
 
 def to_array(feature_map):
     if feature_map.shape[0] == 1:
-        feature_map = feature_map.squeeze(0).permute(1, 2, 0).detach().cuda().numpy()
+        feature_map = feature_map.squeeze(0).permute(1, 2, 0).detach().cpu().numpy()
     else:
-        feature_map = feature_map.permute(0, 2, 3, 1).detach().cuda().numpy()
+        feature_map = feature_map.permute(0, 2, 3, 1).detach().cpu().numpy()
     return feature_map
 
 def to_tensor(feature_map):
@@ -44,6 +44,6 @@ url_TRACER = {
 
 
 def load_pretrained(model_name):
-    state_dict = model_zoo.load_url(url_TRACER[model_name], map_location=torch.device('cuda'))
+    state_dict = model_zoo.load_url(url_TRACER[model_name], map_location=torch.device("cpu"))
 
     return state_dict

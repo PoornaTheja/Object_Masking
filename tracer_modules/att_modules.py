@@ -47,7 +47,7 @@ class Frequency_Edge_Module(nn.Module):
 
     def mask_radial(self, img, r):
         batch, channels, rows, cols = img.shape
-        mask = torch.zeros((rows, cols), dtype=torch.float32, device='cuda')
+        mask = torch.zeros((rows, cols), dtype=torch.float32)
         for i in range(rows):
             for j in range(cols):
                 mask[i, j] = self.distance(i, j, imageSize=rows, r=r)
@@ -64,7 +64,7 @@ class Frequency_Edge_Module(nn.Module):
         x_fft = fftshift(x_fft)
 
         # Mask -> low, high separate
-        mask = self.mask_radial(img=x, r=self.radius)
+        mask = self.mask_radial(img=x, r=self.radius).cuda()
         high_frequency = x_fft * (1 - mask)
         x_fft = ifftshift(high_frequency)
         x_fft = ifft2(x_fft, dim=(-2, -1))

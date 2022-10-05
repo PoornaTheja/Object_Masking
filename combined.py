@@ -26,7 +26,7 @@ original_path = "data/images"
 
 u2net_path = "data/u2net_results"
 isnet_path = "data/is_net_results"
-tracer_path = "data/tracer_results"
+tracer_path = "mask/images"
 
 original_files = sorted(os.listdir(original_path))
 u2net_files = sorted(os.listdir(u2net_path))

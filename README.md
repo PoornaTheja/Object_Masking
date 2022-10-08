@@ -8,7 +8,7 @@ TRACER detects objects with explicit
 edges by incorporating attention guided tracing modules.
 
 ## Usage
-<pre><code>
+<!-- <pre><code>
 data
 ├── images
    ├── sample_image1.png
@@ -16,16 +16,16 @@ data
       .
       .
       .
-</code></pre>
+</code></pre> -->
 1. Clone this repo
 ```
 git clone https://github.com/PoornaTheja/Object_Masking
 ```
 2. Download the ```u2net.pth``` from [GoogleDrive](https://drive.google.com/file/d/1ao1ovG1Qtx4b7EoskHXmi2E9rp5CHLcZ/view?usp=sharing)
 3. Download the ```isnet-general-use.pth``` (for general use) from [GoogleDrive](https://drive.google.com/file/d/1nV57qKuy--d5u1yvkng9aXW1KS4sOpOi/view?usp=sharing)
-2. You can add your images into 'data/images/'
-3.  Run the combined model using  ``` python combined.py```. 
+3. Give the sample images path as an attribute. Run the combined model using  ``` python combined.py <path_to_images_directory>```. 
 4. After generating masks for all the images, you can choose the best mask through STDIN.
+6. Resultant masks will be stored inside the sample images directory.
 
 ## Requirements
 * Python >= 3.7.x
